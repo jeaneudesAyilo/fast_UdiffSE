@@ -29,10 +29,10 @@
                     
                     <div class="entry-content clearfix">    
 
-    <h1 class="post-title entry-title" style="text-align: center;"><strong>Unsupervised Speech Enhancement </strong><strong style="color: inherit; font-family: inherit;">with Diffusion-based Generative Models</strong></h1>
+    <h1 class="post-title entry-title" style="text-align: center;"><strong>Diffusion-based Unsupervised Audio-visual Speech Enhancement </strong><strong style="color: inherit; font-family: inherit;"> </strong></h1>
     <p style="text-align: center;">Jean-Eudes Ayilo, Mostafa Sadeghi, Romain Serizel and Xavier Alameda-Pineda</p>
     
-    <p style="text-align: justify;"><strong>Abstract.</strong> This paper proposes a new unsupervised approach for audio-visual speech enhancement (AVSE), utilizing a diffusion-based generative model for clean speech alongside a non-negative matrix factorization (NMF) model for noise. Specifically, the diffusion model is first pre-trained with clean speech, conditioned on the associated video data, to simulate speech generative distribution. Then, it is combined with the NMF model during testing to estimate the clean speech through iterative expectation maximization (EM), which involves a diffusion-based posterior sampling E-step. This approach extends a method previously developed for audio-only diffusion-based unsupervised speech enhancement. Our contributions include adapting this audio-only framework for the audio-visual scenario and developing a fast inference algorithm. Experimental results demonstrate the effectiveness of the proposed AVSE approach over the audio-only method and show that the proposed approach makes a better compromise between inference speed and performance compared with previous approach.</p>
+    <p style="text-align: justify;"><strong>Abstract.</strong> This paper proposes a new unsupervised approach for audio-visual speech enhancement (AVSE) that combines a diffusion-based audio-visual speech generative model with a non-negative matrix factorization (NMF) noise model. First, the diffusion model is pre-trained on clean speech conditioned on corresponding video data to simulate the speech generative distribution. This pre-trained model is then paired with the NMF-based noise model to iteratively estimate clean speech. Specifically, a diffusion-based posterior sampling approach is implemented within the reverse diffusion process, where after each iteration, a speech estimate is obtained and used to update the noise parameters. Experimental results confirm that the proposed AVSE approach outperforms its audio-only counterpart and show that the new inference algorithm offers a better balance between inference speed and performance compared to the previous inference method.</p>
     <p> </p>
     <h4><strong>TCD-DEMAND</strong></h4>
 
@@ -42,11 +42,11 @@
         <th>id_noise_snr_file</th>
         <th>Clean</th>
         <th>Noisy</th>
-        <th>Udiffse_AO [1]</th>
-        <th>Udiffse_AV</th>
-        <th>Udiffse_AO + (Ours)</th>
-        <th>Udiffse_AV + (Ours)</th>
-        <th>FlowAVSE</th>
+        <th>Udiffse [1]</th>
+        <th>AV-Udiffse</th>
+        <th>AO-Udiffse + (Ours)</th>
+        <th>AV-Udiffse + (Ours)</th>
+        <th>FlowAVSE [2]</th>
         </tr>
         </thead>
         <tbody>
@@ -163,11 +163,11 @@
         <th>id_noise_snr_file</th>
         <th>Clean</th>
         <th>Noisy</th>
-        <th>Udiffse_AO [1]</th>
-        <th>Udiffse_AV</th>
-        <th>Udiffse_AO + (Ours)</th>
-        <th>Udiffse_AV + (Ours)</th>
-        <th>FlowAVSE</th>
+        <th>Udiffse [1]</th>
+        <th>AV-Udiffse</th>
+        <th>AO-Udiffse + (Ours)</th>
+        <th>AV-Udiffse + (Ours)</th>
+        <th>FlowAVSE [2]</th>
         </tr>
         </thead>
         <tbody>
