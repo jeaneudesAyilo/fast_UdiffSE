@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Table</title>
+    <style>
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 17px 0;
+        }
+        th, td {
+            border: 3px solid #dddddd;
+            text-align: center;
+            padding: 5px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head> 
+
+<body>
+
+
+    <div id="post-3436" class="clearfix post post-3436 page type-page status-publish hentry nodate item-wrap">
+		
+        <div class="entry clearfix">                                                 
+                    
+                    <div class="entry-content clearfix">    
+
+    <h1 class="post-title entry-title" style="text-align: center;"><strong>Diffusion-based Unsupervised Audio-visual Speech Enhancement </strong><strong style="color: inherit; font-family: inherit;"> </strong></h1>
+    <p style="text-align: center;">Jean-Eudes Ayilo, Mostafa Sadeghi, Romain Serizel and Xavier Alameda-Pineda</p>
+    
+    <p style="text-align: justify;"><strong>Abstract.</strong> This paper proposes a new unsupervised audio-visual speech enhancement (AVSE) approach that combines a diffusion-based audio-visual speech generative model with a non-negative matrix factorization (NMF) noise model. First, the diffusion model is pre-trained on clean speech conditioned on corresponding video data to simulate the speech generative distribution. This pre-trained model is then paired with the NMF-based noise model to iteratively estimate clean speech. Specifically, a diffusion-based posterior sampling approach is implemented within the reverse diffusion process, where after each iteration, a speech estimate is obtained and used to update the noise parameters. Experimental results confirm that the proposed AVSE approach not only outperforms its audio-only counterpart but also generalizes better than a recent supervised-generative AVSE method. Additionally, the new inference algorithm offers a better balance between inference speed and performance compared to the previous diffusion-based method.</p>
+    <p> </p>
+
+    <!--
+    <h4><strong>TCD-DEMAND</strong></h4>
+
+    <table  class="dataframe">
+        
+        <thead>
+        <tr style="text-align: right;">
+        <th>id_noise_snr_file</th>
+        <th>Clean</th>
+        <th>Noisy</th>
+        <th>Udiffse [1]</th>
+        <th>AV-Udiffse</th>
+        <th>AO-Udiffse + (Ours)</th>
+        <th>AV-Udiffse + (Ours)</th>
+        <th>FlowAVSE [2]</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>09F_SPSQUARE_-5_sx374</td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/09F_SPSQUARE_-5_sx374/clean.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/09F_SPSQUARE_-5_sx374/noisy.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/09F_SPSQUARE_-5_sx374/udiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/09F_SPSQUARE_-5_sx374/udiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/09F_SPSQUARE_-5_sx374/fudiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/09F_SPSQUARE_-5_sx374/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/09F_SPSQUARE_-5_sx374/flowavse.mp4" type="video/mp4"/></video></td>
+        </tr>
+        <tr>
+        <td>24M_STRAFFIC_-5_sx10</td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/24M_STRAFFIC_-5_sx10/clean.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/24M_STRAFFIC_-5_sx10/noisy.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/24M_STRAFFIC_-5_sx10/udiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/24M_STRAFFIC_-5_sx10/udiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/24M_STRAFFIC_-5_sx10/fudiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/24M_STRAFFIC_-5_sx10/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/24M_STRAFFIC_-5_sx10/flowavse.mp4" type="video/mp4"/></video></td>
+        </tr>
+        <tr>
+        <td>26M_TBUS_-5_sx216</td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/26M_TBUS_-5_sx216/clean.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/26M_TBUS_-5_sx216/noisy.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/26M_TBUS_-5_sx216/udiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/26M_TBUS_-5_sx216/udiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/26M_TBUS_-5_sx216/fudiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/26M_TBUS_-5_sx216/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/26M_TBUS_-5_sx216/flowavse.mp4" type="video/mp4"/></video></td>
+        </tr>
+        <tr>
+        <td>27M_STRAFFIC_-5_sx410</td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/27M_STRAFFIC_-5_sx410/clean.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/27M_STRAFFIC_-5_sx410/noisy.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/27M_STRAFFIC_-5_sx410/udiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/27M_STRAFFIC_-5_sx410/udiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/27M_STRAFFIC_-5_sx410/fudiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/27M_STRAFFIC_-5_sx410/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/27M_STRAFFIC_-5_sx410/flowavse.mp4" type="video/mp4"/></video></td>
+        </tr>
+        <tr>
+        <td>27M_TMETRO_-5_si1759</td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/27M_TMETRO_-5_si1759/clean.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/27M_TMETRO_-5_si1759/noisy.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/27M_TMETRO_-5_si1759/udiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/27M_TMETRO_-5_si1759/udiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/27M_TMETRO_-5_si1759/fudiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/27M_TMETRO_-5_si1759/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/27M_TMETRO_-5_si1759/flowavse.mp4" type="video/mp4"/></video></td>
+        </tr>
+        <tr>
+        <td>33F_OOFFICE_-5_si1477</td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/33F_OOFFICE_-5_si1477/clean.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/33F_OOFFICE_-5_si1477/noisy.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/33F_OOFFICE_-5_si1477/udiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/33F_OOFFICE_-5_si1477/udiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/33F_OOFFICE_-5_si1477/fudiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/33F_OOFFICE_-5_si1477/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/33F_OOFFICE_-5_si1477/flowavse.mp4" type="video/mp4"/></video></td>
+        </tr>
+        <tr>
+        <td>33F_SPSQUARE_-5_sx395</td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/33F_SPSQUARE_-5_sx395/clean.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/33F_SPSQUARE_-5_sx395/noisy.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/33F_SPSQUARE_-5_sx395/udiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/33F_SPSQUARE_-5_sx395/udiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/33F_SPSQUARE_-5_sx395/fudiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/33F_SPSQUARE_-5_sx395/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/33F_SPSQUARE_-5_sx395/flowavse.mp4" type="video/mp4"/></video></td>
+        </tr>
+        <tr>
+        <td>40F_TBUS_5_sx388</td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/40F_TBUS_5_sx388/clean.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/40F_TBUS_5_sx388/noisy.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/40F_TBUS_5_sx388/udiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/40F_TBUS_5_sx388/udiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/40F_TBUS_5_sx388/fudiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/40F_TBUS_5_sx388/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/40F_TBUS_5_sx388/flowavse.mp4" type="video/mp4"/></video></td>
+        </tr>
+        <tr>
+        <td>49F_TMETRO_-5_sx409</td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/49F_TMETRO_-5_sx409/clean.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/49F_TMETRO_-5_sx409/noisy.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/49F_TMETRO_-5_sx409/udiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/49F_TMETRO_-5_sx409/udiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/49F_TMETRO_-5_sx409/fudiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/49F_TMETRO_-5_sx409/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/49F_TMETRO_-5_sx409/flowavse.mp4" type="video/mp4"/></video></td>
+        </tr>
+        <tr>
+        <td>56M_OOFFICE_-5_sx435</td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/56M_OOFFICE_-5_sx435/clean.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/56M_OOFFICE_-5_sx435/noisy.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/56M_OOFFICE_-5_sx435/udiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/56M_OOFFICE_-5_sx435/udiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/56M_OOFFICE_-5_sx435/fudiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/56M_OOFFICE_-5_sx435/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/56M_OOFFICE_-5_sx435/flowavse.mp4" type="video/mp4"/></video></td>
+        </tr>
+        </tbody>        
+
+    <p> </p>
+    <h4><strong>LRS3-NCTD</strong></h4>    
+
+    <table class="dataframe">
+        <thead>
+        <tr style="text-align: right;">
+        <th>id_noise_snr_file</th>
+        <th>Clean</th>
+        <th>Noisy</th>
+        <th>Udiffse [1]</th>
+        <th>AV-Udiffse</th>
+        <th>AO-Udiffse + (Ours)</th>
+        <th>AV-Udiffse + (Ours)</th>
+        <th>FlowAVSE [2]</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>0ZfSOArXbGQ_Cafe_-5_00003</td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/0ZfSOArXbGQ_Cafe_-5_00003/clean.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/0ZfSOArXbGQ_Cafe_-5_00003/noisy.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/0ZfSOArXbGQ_Cafe_-5_00003/udiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/0ZfSOArXbGQ_Cafe_-5_00003/udiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/0ZfSOArXbGQ_Cafe_-5_00003/fudiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/0ZfSOArXbGQ_Cafe_-5_00003/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/0ZfSOArXbGQ_Cafe_-5_00003/flowavse.mp4" type="video/mp4"/></video></td>
+        </tr>
+        <tr>
+        <td>1bnzVjOJ6NM_LR_-5_00017</td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/1bnzVjOJ6NM_LR_-5_00017/clean.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/1bnzVjOJ6NM_LR_-5_00017/noisy.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/1bnzVjOJ6NM_LR_-5_00017/udiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/1bnzVjOJ6NM_LR_-5_00017/udiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/1bnzVjOJ6NM_LR_-5_00017/fudiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/1bnzVjOJ6NM_LR_-5_00017/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/1bnzVjOJ6NM_LR_-5_00017/flowavse.mp4" type="video/mp4"/></video></td>
+        </tr>
+        <tr>
+        <td>95ovIJ3dsNk_LR_-5_00006</td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/95ovIJ3dsNk_LR_-5_00006/clean.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/95ovIJ3dsNk_LR_-5_00006/noisy.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/95ovIJ3dsNk_LR_-5_00006/udiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/95ovIJ3dsNk_LR_-5_00006/udiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/95ovIJ3dsNk_LR_-5_00006/fudiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/95ovIJ3dsNk_LR_-5_00006/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/95ovIJ3dsNk_LR_-5_00006/flowavse.mp4" type="video/mp4"/></video></td>
+        </tr>
+        <tr>
+        <td>9uOMectkCCs_Babble_-5_00001</td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/9uOMectkCCs_Babble_-5_00001/clean.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/9uOMectkCCs_Babble_-5_00001/noisy.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/9uOMectkCCs_Babble_-5_00001/udiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/9uOMectkCCs_Babble_-5_00001/udiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/9uOMectkCCs_Babble_-5_00001/fudiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/9uOMectkCCs_Babble_-5_00001/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/9uOMectkCCs_Babble_-5_00001/flowavse.mp4" type="video/mp4"/></video></td>
+        </tr>
+        <tr>
+        <td>fxbCHn6gE3U_Babble_-5_00007</td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/fxbCHn6gE3U_Babble_-5_00007/clean.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/fxbCHn6gE3U_Babble_-5_00007/noisy.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/fxbCHn6gE3U_Babble_-5_00007/udiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/fxbCHn6gE3U_Babble_-5_00007/udiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/fxbCHn6gE3U_Babble_-5_00007/fudiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/fxbCHn6gE3U_Babble_-5_00007/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/fxbCHn6gE3U_Babble_-5_00007/flowavse.mp4" type="video/mp4"/></video></td>
+        </tr>
+        <tr>
+        <td>Li4S1yyrsTI_White_-5_00009</td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Li4S1yyrsTI_White_-5_00009/clean.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Li4S1yyrsTI_White_-5_00009/noisy.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Li4S1yyrsTI_White_-5_00009/udiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Li4S1yyrsTI_White_-5_00009/udiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Li4S1yyrsTI_White_-5_00009/fudiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Li4S1yyrsTI_White_-5_00009/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Li4S1yyrsTI_White_-5_00009/flowavse.mp4" type="video/mp4"/></video></td>
+        </tr>
+        <tr>
+        <td>Mt0PiXLvYlU_Cafe_-5_00009</td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Mt0PiXLvYlU_Cafe_-5_00009/clean.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Mt0PiXLvYlU_Cafe_-5_00009/noisy.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Mt0PiXLvYlU_Cafe_-5_00009/udiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Mt0PiXLvYlU_Cafe_-5_00009/udiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Mt0PiXLvYlU_Cafe_-5_00009/fudiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Mt0PiXLvYlU_Cafe_-5_00009/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Mt0PiXLvYlU_Cafe_-5_00009/flowavse.mp4" type="video/mp4"/></video></td>
+        </tr>
+        <tr>
+        <td>Mt0PiXLvYlU_Car_-5_00011</td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Mt0PiXLvYlU_Car_-5_00011/clean.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Mt0PiXLvYlU_Car_-5_00011/noisy.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Mt0PiXLvYlU_Car_-5_00011/udiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Mt0PiXLvYlU_Car_-5_00011/udiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Mt0PiXLvYlU_Car_-5_00011/fudiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Mt0PiXLvYlU_Car_-5_00011/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Mt0PiXLvYlU_Car_-5_00011/flowavse.mp4" type="video/mp4"/></video></td>
+        </tr>
+        <tr>
+        <td>SE97Kgi0sR4_White_5_00002</td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/SE97Kgi0sR4_White_5_00002/clean.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/SE97Kgi0sR4_White_5_00002/noisy.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/SE97Kgi0sR4_White_5_00002/udiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/SE97Kgi0sR4_White_5_00002/udiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/SE97Kgi0sR4_White_5_00002/fudiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/SE97Kgi0sR4_White_5_00002/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/SE97Kgi0sR4_White_5_00002/flowavse.mp4" type="video/mp4"/></video></td>
+        </tr>
+        <tr>
+        <td>YyXRYgjQXX0_Car_-5_00002</td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/YyXRYgjQXX0_Car_-5_00002/clean.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/YyXRYgjQXX0_Car_-5_00002/noisy.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/YyXRYgjQXX0_Car_-5_00002/udiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/YyXRYgjQXX0_Car_-5_00002/udiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/YyXRYgjQXX0_Car_-5_00002/fudiffuse_ao.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/YyXRYgjQXX0_Car_-5_00002/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+        <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/YyXRYgjQXX0_Car_-5_00002/flowavse.mp4" type="video/mp4"/></video></td>
+        </tr>
+        </tbody>
+    </table>
+    -->
+
+    <!-- WAV -->
+
+    <!--
+    <h4><strong>TCD-DEMAND</strong></h4>
+
+    <table  class="dataframe">
+    <thead>
+        <tr style="text-align: right;">
+        <th>id_noise_snr_file</th>
+        <th>Clean</th>
+        <th>Noisy</th>
+        <th>Udiffse [1]</th>
+        <th>AV-Udiffse</th>
+        <th>AO-Udiffse + (Ours)</th>
+        <th>AV-Udiffse + (Ours)</th>
+        <th>FlowAVSE [2]</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>09F_SPSQUARE_-5_sx374</td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/09F_SPSQUARE_-5_sx374/clean.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/09F_SPSQUARE_-5_sx374/noisy.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/09F_SPSQUARE_-5_sx374/udiffuse_ao.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/09F_SPSQUARE_-5_sx374/udiffuse_av.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/09F_SPSQUARE_-5_sx374/fudiffuse_ao.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/09F_SPSQUARE_-5_sx374/fudiffuse_av.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/09F_SPSQUARE_-5_sx374/flowavse.wav"/></audio></td>
+        </tr>
+        <tr>
+        <td>24M_STRAFFIC_-5_sx10</td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/24M_STRAFFIC_-5_sx10/clean.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/24M_STRAFFIC_-5_sx10/noisy.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/24M_STRAFFIC_-5_sx10/udiffuse_ao.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/24M_STRAFFIC_-5_sx10/udiffuse_av.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/24M_STRAFFIC_-5_sx10/fudiffuse_ao.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/24M_STRAFFIC_-5_sx10/fudiffuse_av.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/24M_STRAFFIC_-5_sx10/flowavse.wav"/></audio></td>
+        </tr>
+        <tr>
+        <td>26M_TBUS_-5_sx216</td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/26M_TBUS_-5_sx216/clean.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/26M_TBUS_-5_sx216/noisy.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/26M_TBUS_-5_sx216/udiffuse_ao.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/26M_TBUS_-5_sx216/udiffuse_av.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/26M_TBUS_-5_sx216/fudiffuse_ao.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/26M_TBUS_-5_sx216/fudiffuse_av.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/26M_TBUS_-5_sx216/flowavse.wav"/></audio></td>
+        </tr>
+        <tr>
+        <td>27M_STRAFFIC_-5_sx410</td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_STRAFFIC_-5_sx410/clean.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_STRAFFIC_-5_sx410/noisy.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_STRAFFIC_-5_sx410/udiffuse_ao.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_STRAFFIC_-5_sx410/udiffuse_av.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_STRAFFIC_-5_sx410/fudiffuse_ao.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_STRAFFIC_-5_sx410/fudiffuse_av.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_STRAFFIC_-5_sx410/flowavse.wav"/></audio></td>
+        </tr>
+        <tr>
+        <td>27M_TMETRO_-5_si1759</td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_TMETRO_-5_si1759/clean.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_TMETRO_-5_si1759/noisy.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_TMETRO_-5_si1759/udiffuse_ao.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_TMETRO_-5_si1759/udiffuse_av.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_TMETRO_-5_si1759/fudiffuse_ao.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_TMETRO_-5_si1759/fudiffuse_av.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_TMETRO_-5_si1759/flowavse.wav"/></audio></td>
+        </tr>
+        <tr>
+        <td>33F_OOFFICE_-5_si1477</td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_OOFFICE_-5_si1477/clean.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_OOFFICE_-5_si1477/noisy.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_OOFFICE_-5_si1477/udiffuse_ao.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_OOFFICE_-5_si1477/udiffuse_av.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_OOFFICE_-5_si1477/fudiffuse_ao.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_OOFFICE_-5_si1477/fudiffuse_av.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_OOFFICE_-5_si1477/flowavse.wav"/></audio></td>
+        </tr>
+        <tr>
+        <td>33F_SPSQUARE_-5_sx395</td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_SPSQUARE_-5_sx395/clean.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_SPSQUARE_-5_sx395/noisy.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_SPSQUARE_-5_sx395/udiffuse_ao.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_SPSQUARE_-5_sx395/udiffuse_av.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_SPSQUARE_-5_sx395/fudiffuse_ao.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_SPSQUARE_-5_sx395/fudiffuse_av.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_SPSQUARE_-5_sx395/flowavse.wav"/></audio></td>
+        </tr>
+        <tr>
+        <td>40F_TBUS_5_sx388</td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/40F_TBUS_5_sx388/clean.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/40F_TBUS_5_sx388/noisy.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/40F_TBUS_5_sx388/udiffuse_ao.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/40F_TBUS_5_sx388/udiffuse_av.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/40F_TBUS_5_sx388/fudiffuse_ao.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/40F_TBUS_5_sx388/fudiffuse_av.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/40F_TBUS_5_sx388/flowavse.wav"/></audio></td>
+        </tr>
+        <tr>
+        <td>49F_TMETRO_-5_sx409</td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/49F_TMETRO_-5_sx409/clean.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/49F_TMETRO_-5_sx409/noisy.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/49F_TMETRO_-5_sx409/udiffuse_ao.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/49F_TMETRO_-5_sx409/udiffuse_av.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/49F_TMETRO_-5_sx409/fudiffuse_ao.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/49F_TMETRO_-5_sx409/fudiffuse_av.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/49F_TMETRO_-5_sx409/flowavse.wav"/></audio></td>
+        </tr>
+        <tr>
+        <td>56M_OOFFICE_-5_sx435</td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/56M_OOFFICE_-5_sx435/clean.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/56M_OOFFICE_-5_sx435/noisy.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/56M_OOFFICE_-5_sx435/udiffuse_ao.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/56M_OOFFICE_-5_sx435/udiffuse_av.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/56M_OOFFICE_-5_sx435/fudiffuse_ao.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/56M_OOFFICE_-5_sx435/fudiffuse_av.wav"/></audio></td>
+        <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/56M_OOFFICE_-5_sx435/flowavse.wav"/></audio></td>
+        </tr>
+        </tbody>
+
+    </table>
+
+    <h4><strong>LRS3-NCTD</strong></h4>    
+
+    <table class="dataframe">        
+            <thead>
+            <tr style="text-align: right;">
+            <th>id_noise_snr_file</th>
+            <th>Clean</th>
+            <th>Noisy</th>
+            <th>Udiffse [1]</th>
+            <th>AV-Udiffse</th>
+            <th>AO-Udiffse + (Ours)</th>
+            <th>AV-Udiffse + (Ours)</th>
+            <th>FlowAVSE [2]</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td>09F_SPSQUARE_-5_sx374</td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/09F_SPSQUARE_-5_sx374/clean.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/09F_SPSQUARE_-5_sx374/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/09F_SPSQUARE_-5_sx374/udiffuse_ao.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/09F_SPSQUARE_-5_sx374/udiffuse_av.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/09F_SPSQUARE_-5_sx374/fudiffuse_ao.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/09F_SPSQUARE_-5_sx374/fudiffuse_av.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/09F_SPSQUARE_-5_sx374/flowavse.wav"/></audio></td>
+            </tr>
+            <tr>
+            <td>24M_STRAFFIC_-5_sx10</td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/24M_STRAFFIC_-5_sx10/clean.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/24M_STRAFFIC_-5_sx10/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/24M_STRAFFIC_-5_sx10/udiffuse_ao.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/24M_STRAFFIC_-5_sx10/udiffuse_av.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/24M_STRAFFIC_-5_sx10/fudiffuse_ao.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/24M_STRAFFIC_-5_sx10/fudiffuse_av.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/24M_STRAFFIC_-5_sx10/flowavse.wav"/></audio></td>
+            </tr>
+            <tr>
+            <td>26M_TBUS_-5_sx216</td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/26M_TBUS_-5_sx216/clean.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/26M_TBUS_-5_sx216/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/26M_TBUS_-5_sx216/udiffuse_ao.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/26M_TBUS_-5_sx216/udiffuse_av.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/26M_TBUS_-5_sx216/fudiffuse_ao.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/26M_TBUS_-5_sx216/fudiffuse_av.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/26M_TBUS_-5_sx216/flowavse.wav"/></audio></td>
+            </tr>
+            <tr>
+            <td>27M_STRAFFIC_-5_sx410</td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_STRAFFIC_-5_sx410/clean.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_STRAFFIC_-5_sx410/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_STRAFFIC_-5_sx410/udiffuse_ao.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_STRAFFIC_-5_sx410/udiffuse_av.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_STRAFFIC_-5_sx410/fudiffuse_ao.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_STRAFFIC_-5_sx410/fudiffuse_av.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_STRAFFIC_-5_sx410/flowavse.wav"/></audio></td>
+            </tr>
+            <tr>
+            <td>27M_TMETRO_-5_si1759</td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_TMETRO_-5_si1759/clean.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_TMETRO_-5_si1759/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_TMETRO_-5_si1759/udiffuse_ao.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_TMETRO_-5_si1759/udiffuse_av.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_TMETRO_-5_si1759/fudiffuse_ao.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_TMETRO_-5_si1759/fudiffuse_av.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_TMETRO_-5_si1759/flowavse.wav"/></audio></td>
+            </tr>
+            <tr>
+            <td>33F_OOFFICE_-5_si1477</td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_OOFFICE_-5_si1477/clean.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_OOFFICE_-5_si1477/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_OOFFICE_-5_si1477/udiffuse_ao.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_OOFFICE_-5_si1477/udiffuse_av.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_OOFFICE_-5_si1477/fudiffuse_ao.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_OOFFICE_-5_si1477/fudiffuse_av.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_OOFFICE_-5_si1477/flowavse.wav"/></audio></td>
+            </tr>
+            <tr>
+            <td>33F_SPSQUARE_-5_sx395</td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_SPSQUARE_-5_sx395/clean.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_SPSQUARE_-5_sx395/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_SPSQUARE_-5_sx395/udiffuse_ao.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_SPSQUARE_-5_sx395/udiffuse_av.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_SPSQUARE_-5_sx395/fudiffuse_ao.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_SPSQUARE_-5_sx395/fudiffuse_av.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_SPSQUARE_-5_sx395/flowavse.wav"/></audio></td>
+            </tr>
+            <tr>
+            <td>40F_TBUS_5_sx388</td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/40F_TBUS_5_sx388/clean.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/40F_TBUS_5_sx388/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/40F_TBUS_5_sx388/udiffuse_ao.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/40F_TBUS_5_sx388/udiffuse_av.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/40F_TBUS_5_sx388/fudiffuse_ao.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/40F_TBUS_5_sx388/fudiffuse_av.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/40F_TBUS_5_sx388/flowavse.wav"/></audio></td>
+            </tr>
+            <tr>
+            <td>49F_TMETRO_-5_sx409</td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/49F_TMETRO_-5_sx409/clean.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/49F_TMETRO_-5_sx409/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/49F_TMETRO_-5_sx409/udiffuse_ao.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/49F_TMETRO_-5_sx409/udiffuse_av.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/49F_TMETRO_-5_sx409/fudiffuse_ao.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/49F_TMETRO_-5_sx409/fudiffuse_av.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/49F_TMETRO_-5_sx409/flowavse.wav"/></audio></td>
+            </tr>
+            <tr>
+            <td>56M_OOFFICE_-5_sx435</td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/56M_OOFFICE_-5_sx435/clean.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/56M_OOFFICE_-5_sx435/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/56M_OOFFICE_-5_sx435/udiffuse_ao.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/56M_OOFFICE_-5_sx435/udiffuse_av.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/56M_OOFFICE_-5_sx435/fudiffuse_ao.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/56M_OOFFICE_-5_sx435/fudiffuse_av.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/56M_OOFFICE_-5_sx435/flowavse.wav"/></audio></td>
+            </tr>
+            </tbody>
+    </table>
+
+    -->
+
+
+    <!-- WAV / MP4-->
+
+    <h4><strong>TCD-DEMAND</strong></h4>
+    <table class="dataframe"> 
+        
+        <thead>
+            <tr style="text-align: right;">
+            <th>id_noise_snr_file</th>
+            <th>Clean</th>
+            <th>Noisy</th>
+            <th>UDiffSE [1]</th>
+            <th>AV-UDiffSE</th>
+            <th>AO-UDiffSE + (Ours)</th>
+            <th>AV-UDiffSE + (Ours)</th>
+            <th>FlowAVSE [2]</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td>09F_SPSQUARE_-5_sx374</td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/09F_SPSQUARE_-5_sx374/clean.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/09F_SPSQUARE_-5_sx374/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/09F_SPSQUARE_-5_sx374/udiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/09F_SPSQUARE_-5_sx374/udiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/09F_SPSQUARE_-5_sx374/fudiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/09F_SPSQUARE_-5_sx374/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/09F_SPSQUARE_-5_sx374/flowavse.mp4" type="video/mp4"/></video></td>
+            </tr>
+            <tr>
+            <td>24M_STRAFFIC_-5_sx10</td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/24M_STRAFFIC_-5_sx10/clean.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/24M_STRAFFIC_-5_sx10/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/24M_STRAFFIC_-5_sx10/udiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/24M_STRAFFIC_-5_sx10/udiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/24M_STRAFFIC_-5_sx10/fudiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/24M_STRAFFIC_-5_sx10/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/24M_STRAFFIC_-5_sx10/flowavse.mp4" type="video/mp4"/></video></td>
+            </tr>
+            <tr>
+            <td>26M_TBUS_-5_sx216</td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/26M_TBUS_-5_sx216/clean.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/26M_TBUS_-5_sx216/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/26M_TBUS_-5_sx216/udiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/26M_TBUS_-5_sx216/udiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/26M_TBUS_-5_sx216/fudiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/26M_TBUS_-5_sx216/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/26M_TBUS_-5_sx216/flowavse.mp4" type="video/mp4"/></video></td>
+            </tr>
+            <tr>
+            <td>27M_STRAFFIC_-5_sx410</td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/27M_STRAFFIC_-5_sx410/clean.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_STRAFFIC_-5_sx410/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_STRAFFIC_-5_sx410/udiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/27M_STRAFFIC_-5_sx410/udiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_STRAFFIC_-5_sx410/fudiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/27M_STRAFFIC_-5_sx410/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/27M_STRAFFIC_-5_sx410/flowavse.mp4" type="video/mp4"/></video></td>
+            </tr>
+            <tr>
+            <td>27M_TMETRO_-5_si1759</td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/27M_TMETRO_-5_si1759/clean.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_TMETRO_-5_si1759/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_TMETRO_-5_si1759/udiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/27M_TMETRO_-5_si1759/udiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/27M_TMETRO_-5_si1759/fudiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/27M_TMETRO_-5_si1759/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/27M_TMETRO_-5_si1759/flowavse.mp4" type="video/mp4"/></video></td>
+            </tr>
+            <tr>
+            <td>33F_OOFFICE_-5_si1477</td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/33F_OOFFICE_-5_si1477/clean.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_OOFFICE_-5_si1477/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_OOFFICE_-5_si1477/udiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/33F_OOFFICE_-5_si1477/udiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_OOFFICE_-5_si1477/fudiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/33F_OOFFICE_-5_si1477/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/33F_OOFFICE_-5_si1477/flowavse.mp4" type="video/mp4"/></video></td>
+            </tr>
+            <tr>
+            <td>33F_SPSQUARE_-5_sx395</td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/33F_SPSQUARE_-5_sx395/clean.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_SPSQUARE_-5_sx395/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_SPSQUARE_-5_sx395/udiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/33F_SPSQUARE_-5_sx395/udiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/33F_SPSQUARE_-5_sx395/fudiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/33F_SPSQUARE_-5_sx395/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/33F_SPSQUARE_-5_sx395/flowavse.mp4" type="video/mp4"/></video></td>
+            </tr>
+            <tr>
+            <td>40F_TBUS_5_sx388</td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/40F_TBUS_5_sx388/clean.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/40F_TBUS_5_sx388/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/40F_TBUS_5_sx388/udiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/40F_TBUS_5_sx388/udiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/40F_TBUS_5_sx388/fudiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/40F_TBUS_5_sx388/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/40F_TBUS_5_sx388/flowavse.mp4" type="video/mp4"/></video></td>
+            </tr>
+            <tr>
+            <td>49F_TMETRO_-5_sx409</td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/49F_TMETRO_-5_sx409/clean.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/49F_TMETRO_-5_sx409/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/49F_TMETRO_-5_sx409/udiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/49F_TMETRO_-5_sx409/udiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/49F_TMETRO_-5_sx409/fudiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/49F_TMETRO_-5_sx409/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/49F_TMETRO_-5_sx409/flowavse.mp4" type="video/mp4"/></video></td>
+            </tr>
+            <tr>
+            <td>56M_OOFFICE_-5_sx435</td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/56M_OOFFICE_-5_sx435/clean.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/56M_OOFFICE_-5_sx435/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/56M_OOFFICE_-5_sx435/udiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/56M_OOFFICE_-5_sx435/udiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/TCD-DEMAND/56M_OOFFICE_-5_sx435/fudiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/56M_OOFFICE_-5_sx435/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/TCD-DEMAND/56M_OOFFICE_-5_sx435/flowavse.mp4" type="video/mp4"/></video></td>
+            </tr>
+            </tbody>
+        </table>
+
+
+    <h4><strong>LRS3-NCTD</strong></h4>
+    
+    <table class="dataframe">         
+        <thead>
+            <tr style="text-align: right;">
+            <th>id_noise_snr_file</th>
+            <th>Clean</th>
+            <th>Noisy</th>
+            <th>UDiffSE [1]</th>
+            <th>AV-UDiffSE</th>
+            <th>AO-UDiffSE + (Ours)</th>
+            <th>AV-UDiffSE + (Ours)</th>
+            <th>FlowAVSE [2]</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td>0ZfSOArXbGQ_Cafe_-5_00003</td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/0ZfSOArXbGQ_Cafe_-5_00003/clean.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/0ZfSOArXbGQ_Cafe_-5_00003/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/0ZfSOArXbGQ_Cafe_-5_00003/udiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/0ZfSOArXbGQ_Cafe_-5_00003/udiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/0ZfSOArXbGQ_Cafe_-5_00003/fudiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/0ZfSOArXbGQ_Cafe_-5_00003/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/0ZfSOArXbGQ_Cafe_-5_00003/flowavse.mp4" type="video/mp4"/></video></td>
+            </tr>
+            <tr>
+            <td>1bnzVjOJ6NM_LR_-5_00017</td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/1bnzVjOJ6NM_LR_-5_00017/clean.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/1bnzVjOJ6NM_LR_-5_00017/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/1bnzVjOJ6NM_LR_-5_00017/udiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/1bnzVjOJ6NM_LR_-5_00017/udiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/1bnzVjOJ6NM_LR_-5_00017/fudiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/1bnzVjOJ6NM_LR_-5_00017/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/1bnzVjOJ6NM_LR_-5_00017/flowavse.mp4" type="video/mp4"/></video></td>
+            </tr>
+            <tr>
+            <td>95ovIJ3dsNk_LR_-5_00006</td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/95ovIJ3dsNk_LR_-5_00006/clean.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/95ovIJ3dsNk_LR_-5_00006/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/95ovIJ3dsNk_LR_-5_00006/udiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/95ovIJ3dsNk_LR_-5_00006/udiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/95ovIJ3dsNk_LR_-5_00006/fudiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/95ovIJ3dsNk_LR_-5_00006/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/95ovIJ3dsNk_LR_-5_00006/flowavse.mp4" type="video/mp4"/></video></td>
+            </tr>
+            <tr>
+            <td>9uOMectkCCs_Babble_-5_00001</td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/9uOMectkCCs_Babble_-5_00001/clean.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/9uOMectkCCs_Babble_-5_00001/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/9uOMectkCCs_Babble_-5_00001/udiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/9uOMectkCCs_Babble_-5_00001/udiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/9uOMectkCCs_Babble_-5_00001/fudiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/9uOMectkCCs_Babble_-5_00001/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/9uOMectkCCs_Babble_-5_00001/flowavse.mp4" type="video/mp4"/></video></td>
+            </tr>
+            <tr>
+            <td>fxbCHn6gE3U_Babble_-5_00007</td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/fxbCHn6gE3U_Babble_-5_00007/clean.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/fxbCHn6gE3U_Babble_-5_00007/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/fxbCHn6gE3U_Babble_-5_00007/udiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/fxbCHn6gE3U_Babble_-5_00007/udiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/fxbCHn6gE3U_Babble_-5_00007/fudiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/fxbCHn6gE3U_Babble_-5_00007/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/fxbCHn6gE3U_Babble_-5_00007/flowavse.mp4" type="video/mp4"/></video></td>
+            </tr>
+            <tr>
+            <td>Li4S1yyrsTI_White_-5_00009</td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Li4S1yyrsTI_White_-5_00009/clean.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/Li4S1yyrsTI_White_-5_00009/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/Li4S1yyrsTI_White_-5_00009/udiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Li4S1yyrsTI_White_-5_00009/udiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/Li4S1yyrsTI_White_-5_00009/fudiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Li4S1yyrsTI_White_-5_00009/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Li4S1yyrsTI_White_-5_00009/flowavse.mp4" type="video/mp4"/></video></td>
+            </tr>
+            <tr>
+            <td>Mt0PiXLvYlU_Cafe_-5_00009</td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Mt0PiXLvYlU_Cafe_-5_00009/clean.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/Mt0PiXLvYlU_Cafe_-5_00009/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/Mt0PiXLvYlU_Cafe_-5_00009/udiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Mt0PiXLvYlU_Cafe_-5_00009/udiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/Mt0PiXLvYlU_Cafe_-5_00009/fudiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Mt0PiXLvYlU_Cafe_-5_00009/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Mt0PiXLvYlU_Cafe_-5_00009/flowavse.mp4" type="video/mp4"/></video></td>
+            </tr>
+            <tr>
+            <td>Mt0PiXLvYlU_Car_-5_00011</td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Mt0PiXLvYlU_Car_-5_00011/clean.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/Mt0PiXLvYlU_Car_-5_00011/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/Mt0PiXLvYlU_Car_-5_00011/udiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Mt0PiXLvYlU_Car_-5_00011/udiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/Mt0PiXLvYlU_Car_-5_00011/fudiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Mt0PiXLvYlU_Car_-5_00011/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/Mt0PiXLvYlU_Car_-5_00011/flowavse.mp4" type="video/mp4"/></video></td>
+            </tr>
+            <tr>
+            <td>SE97Kgi0sR4_White_5_00002</td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/SE97Kgi0sR4_White_5_00002/clean.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/SE97Kgi0sR4_White_5_00002/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/SE97Kgi0sR4_White_5_00002/udiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/SE97Kgi0sR4_White_5_00002/udiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/SE97Kgi0sR4_White_5_00002/fudiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/SE97Kgi0sR4_White_5_00002/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/SE97Kgi0sR4_White_5_00002/flowavse.mp4" type="video/mp4"/></video></td>
+            </tr>
+            <tr>
+            <td>YyXRYgjQXX0_Car_-5_00002</td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/YyXRYgjQXX0_Car_-5_00002/clean.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/YyXRYgjQXX0_Car_-5_00002/noisy.wav"/></audio></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/YyXRYgjQXX0_Car_-5_00002/udiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/YyXRYgjQXX0_Car_-5_00002/udiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td style="width: 16.6667%;"><audio controls="controls" style="width: 150px; height: 40px;"><source src="./icp_samples/LRS3-NTCD/YyXRYgjQXX0_Car_-5_00002/fudiffuse_ao.wav"/></audio></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/YyXRYgjQXX0_Car_-5_00002/fudiffuse_av.mp4" type="video/mp4"/></video></td>
+            <td><video controls="" height="150" width="150"><source src="./icp_samples/LRS3-NTCD/YyXRYgjQXX0_Car_-5_00002/flowavse.mp4" type="video/mp4"/></video></td>
+            </tr>
+            </tbody>
+        </table>    
+    
+
+    <p> </p>
+    <h3>References</h3>
+    <p>[1] Berné Nortier, Mostafa Sadeghi, and Romain Serizel, “Unsupervised Speech Enhancement with Diffusion-based Generative Models,” in IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 2024.</p>
+    <p>[2] Chaeyoung Jung, Suyeon Lee, Ji-Hoon Kim, Joon Son Chung, “FlowAVSE: Efficient audio visual speech enhancement models with conditional flow matching,” Interspeech 2024.</p>
+    
+
+    
+</body>
+</html>
