@@ -22,7 +22,7 @@ pip install -r requirements.txt
 
 ## Data
 
-The video of lips ROI (88 $\times$ 88 and 112 $\times$ 112) for TCD-TIMIT (train/valid/test) and LRS3 test set are provided following the links: 
+The video of lips ROI (88 × 88 and 112 × 112) for TCD-TIMIT (train/valid/test) and LRS3 test set are provided following the links: 
 
 - [TCD-TIMIT (train/valid/test) and LRS3-test lips video in 88 $\times$ 88 format](https://huggingface.co/jeaneudesAyilo/files_for_fast_UdiffSE/resolve/main/CROPPED_MOUTH_ldmark_48_68_size_88_88.tar.gz)   
 - [TCD-TIMIT (train/valid/test) and LRS3-test lips video in 112 $\times$ 112](https://huggingface.co/jeaneudesAyilo/files_for_fast_UdiffSE/resolve/main/CROPPED_MOUTH_ldmark_28_68_size_112_112.tar.gz)
